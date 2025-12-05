@@ -1,0 +1,17 @@
+import express, { json } from 'express';
+import { initialize } from './repository.mjs';
+import router from './router.mjs';
+//config();
+const PORT = process.env.PORT || 8080;
+express()
+	.use(json())
+	.use(express.static('../client'))
+	.use('/models', router)
+	.listen(PORT, async () => {
+		try {
+			await initialize();
+			console.log(`Server is running on port ${PORT}.`);
+		} catch (error) {
+			console.error(error);
+		}
+	});

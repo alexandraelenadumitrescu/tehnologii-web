@@ -1,0 +1,41 @@
+<div class="form">
+	<h1>Session</h1>
+	<form data-id="${id}">
+		<label for="subject">Title</label>
+		<input type="text" value="${title}" data="title" required>
+		<label for="description">Description</label>
+		<textarea rows="10" data="description" required>${description}</textarea>
+		<label for="speaker">Speaker</label>
+		<div class="select">
+			<select data="speakerId" required>
+				<option value="">-- New --</option>
+				#{speakers}
+				<option value="${id}"  %{'${../speakerId}' === '${id}' ? 'selected' : ''}>${firstName} ${lastName}</option>
+				#{/speakers}
+			</select>
+			<input type="button" class="edit" value="Edit">
+		</div>
+		<label for="room">Room</label>
+		<div class="select">
+			<select data="roomId" required>
+				<option value="">-- New --</option>
+				#{rooms}
+				<option value="${id}" %{'${../roomId}' === '${id}' ? 'selected' : ''}>${name}</option>
+				#{/rooms}
+			</select>		
+			<input type="button" class="edit" value="Edit">
+		</div>
+		<label for="begin">Begin</label>
+		<input type="time" value="${begin}" data="begin" required>
+		<label for="end">End</label>
+		<input type="time" value="${end}" data="end" required>
+		<div class="buttons">
+			<input type="submit" value="Save">
+			?{existing: '${id}'.length > 0}
+			<input type="button" class="delete" value="Delete">
+			?{/existing}
+			<input type="reset" value="Cancel">
+		</div>
+	</form>
+	<div id="dialog" className="modal-dialog"/>
+</div>
