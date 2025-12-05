@@ -1,0 +1,20 @@
+{
+  "name": "conference",
+  "version": "1.0.0",
+  "author": "Iulian ILIE-NEMEDI",
+  "scripts": {
+    "dev": "nodemon server.mjs",
+    "it": "node server.mjs"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  },
+  "nodemonConfig": {
+    "ignore": ["repository.db"]
+  }
+}
